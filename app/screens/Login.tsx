@@ -25,7 +25,7 @@ const Login = (props: Props) => {
           <TextInput value={email} onChangeText={(value) => setemail(value)} placeholder={AppStrings.Email} style={styles.textinput} />
           <TextInput value={password} onChangeText={(value) => setpassword(value)} placeholder={AppStrings.Password} style={styles.textinput} />
         </View>
-        <TouchableOpacity onPress={() => loginClick()} style={[styles.textinput, { width: Device.width / 2, alignSelf: 'center', backgroundColor: Colors.skyDark, justifyContent: 'center', alignItems: 'center' }]}>
+        <TouchableOpacity onPress={() => loginClick()} style={[styles.textinput, { width: Device.width / 2, padding: 0, alignSelf: 'center', backgroundColor: Colors.skyDark, justifyContent: 'center', alignItems: 'center' }]}>
           <Text style={{ color: Colors.white }}>{AppStrings.Login}</Text>
         </TouchableOpacity>
       </ScrollView>
