@@ -16,7 +16,7 @@ const BottomTabs = (props: Props) => {
             tabBarActiveTintColor: Colors.skyDark,
             tabBarInactiveTintColor: Colors.sky,
         })}>
-            <Tab.Screen options={{
+            <Tab.Screen options={{                
                 headerShown: false, tabBarIcon: ({ focused, color, size }) => {
                     return <Image source={{ uri: 'home' }} style={{ height: 30, width: 30, tintColor: focused ? Colors.skyDark : Colors.sky }} />;
                 }

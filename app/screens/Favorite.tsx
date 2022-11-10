@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { addFavourites, removeFavourites } from '../redux/actions/FavouritesActions';
 import { Colors } from '../resources/Colors';
 import { AppStrings } from '../resources/Strings';
+import { Device } from '../utils/Device';
 
 type Props = {}
 
@@ -36,6 +37,10 @@ const Favorite = (props: Props) => {
             <FlatList
                 keyExtractor={(item, index) => item.id?.value + index}
                 data={favourite}
+                ListEmptyComponent={<View style={{height:Device.height,justifyContent:'center',alignItems:'center'}}>
+                    <Image source={{uri:'nodata'}} style={{height:Device.height*0.3,width:Device.height*0.3}}/>
+                    <Text style={{color:Colors.skyDark,textAlign:'center',fontSize:16,fontWeight:'500',padding:40}}>{AppStrings.OppsNoFav}</Text>
+                </View>}
                 renderItem={renderItem} />
         </SafeAreaView>
     )
