@@ -2,6 +2,7 @@ export const Colors={
     black:'black',
     red:'red',
     sky:'#add8e6',
+    lightSky:'#cad9de',
     skyDark:'#02789c',
     blue:'#7597ff',
     turquiose:'turquiose',

@@ -45,7 +45,7 @@ const Home = (props: Props) => {
     const renderItem = ({ item, index }: any) => {
         return <LinearGradient start={{ x: 1.0, y: 0.5 }} end={{ x: 0.5, y: 1.0 }}
             colors={[Colors.skyDark, Colors.sky]} style={{ margin: 5, marginStart: 30, marginEnd: 20, alignItems: 'center', justifyContent: 'center', borderRadius: 10, borderWidth: 1, flexDirection: 'row', padding: 5, backgroundColor: Colors.sky }}>
-            <Image source={{ uri: item.picture.thumbnail }} style={{ position: 'absolute', marginStart: 10, height: 90, width: 90, borderRadius: 45, start: -35, borderWidth: 1, borderColor: Colors.black }} />
+            <Image source={{ uri: item.picture.medium }} style={{ position: 'absolute', marginStart: 10, height: 90, width: 90, borderRadius: 45, start: -35, borderWidth: 1, borderColor: Colors.black }} />
             <View style={{ flex: 8, marginStart: 60 }}>
                 <View style={{ flexDirection: 'row' }}>
                     <Image source={{ uri: 'name' }} style={{ height: 40, width: 40 }} />
