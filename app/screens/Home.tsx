@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import { FlatList, Image, RefreshControl, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { addFavourites } from '../redux/actions/FavouritesActions'
 import { Colors } from '../resources/Colors'
@@ -10,15 +10,30 @@ type Props = {}
 const baseURL = 'https://randomuser.me/api/'
 const Home = (props: Props) => {
     const dispatch = useDispatch();
-    const [usersData, setusersData] = useState()
+    const [usersData, setusersData] = useState<any[]>([])
+    const [refreshing, setrefreshing] = useState(false)
+    const [page, setpage] = useState(10)
     useEffect(() => {
         getUsers()
         return () => { }
     }, [])
+    useEffect(() => {
+        getUsersWithPagination()
+        return () => { }
+    }, [page])
+
     function getUsers() {
-        axios.get(baseURL + "?results=10").then((response) => {
+        setrefreshing(true)
+        axios.get(baseURL + "?results=" + page).then((response) => {
             console.log(response.data);
-            setusersData(response.data.results)
+            setusersData(response.data.results)     
+            setrefreshing(false)       
+        });
+    }
+    function getUsersWithPagination() {
+        axios.get(baseURL + "?results=" + page).then((response) => {
+            console.log(response.data);
+            setusersData(users => [...users, ...response.data.results]);
         });
     }
     function addToFavourite(item: any, index: number) {
@@ -39,12 +54,27 @@ const Home = (props: Props) => {
             </TouchableOpacity>
         </View>
     }
+    function fetchList() {
+        setpage(value => value + 10)
+    }
+
+    function onEndReached() {
+        fetchList();
+    }
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <FlatList
-                keyExtractor={(item, index) => item.id.value + index}
+                keyExtractor={(item, index) => item?.id?.value + index}
                 data={usersData}
-                renderItem={renderItem} />
+                renderItem={renderItem}
+                onEndReached={() => onEndReached()}
+                refreshControl={
+                    <RefreshControl
+                      refreshing={refreshing}
+                      onRefresh={()=>getUsers()}
+                    />
+                  }
+                onEndReachedThreshold={0.3} />
         </SafeAreaView>
     )
 }

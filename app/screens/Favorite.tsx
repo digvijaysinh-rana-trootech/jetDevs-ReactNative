@@ -1,5 +1,5 @@
 import { View, Text, SafeAreaView, Image, TouchableOpacity, FlatList } from 'react-native'
-import React from 'react'
+import React, { useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux';
 import { addFavourites, removeFavourites } from '../redux/actions/FavouritesActions';
 import { Colors } from '../resources/Colors';
@@ -9,8 +9,7 @@ type Props = {}
 
 const Favorite = (props: Props) => {
     const dispatch = useDispatch();
-    const favourite = useSelector((store) => store.favourites.list);
-
+    const favourite = useSelector((store) => store.favourites.list);    
     function removeFromFavourite(item:any,index:number) {
         dispatch(removeFavourites(item));
     }
@@ -30,6 +29,8 @@ const Favorite = (props: Props) => {
             </TouchableOpacity>
         </View>
     }
+
+ 
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <FlatList
