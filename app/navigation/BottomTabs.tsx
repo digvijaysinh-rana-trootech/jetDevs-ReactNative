@@ -38,6 +38,7 @@ const BottomTabs = (props: Props) => {
                 };
                 return (
                     <TouchableOpacity
+                        key={label.toString()}
                         onPress={onPress}
                         style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
                         <Image source={{ uri: label == ScreenName.HomeScreen ? 'home' : 'star' }} style={{ height: 30, width: 30, tintColor: isFocused ? Colors.skyDark : Colors.gray }} />

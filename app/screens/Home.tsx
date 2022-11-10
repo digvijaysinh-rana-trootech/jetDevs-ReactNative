@@ -43,14 +43,13 @@ const Home = (props: Props) => {
         dispatch(addFavourites(item));
     }
     const renderItem = ({ item, index }: any) => {
-
         return <LinearGradient start={{ x: 1.0, y: 0.5 }} end={{ x: 0.5, y: 1.0 }}
-            colors={[Colors.skyDark, Colors.sky]} style={{ margin: 5, marginStart: 20, marginEnd: 20, alignItems: 'center', justifyContent: 'center', borderRadius: 10, borderWidth: 1, flexDirection: 'row', padding: 5, backgroundColor: Colors.sky }}>
-            <Image source={{ uri: item.picture.thumbnail }} style={{ height: 90, width: 90, borderRadius: 45, start: -25, borderWidth: 1, borderColor: Colors.black }} />
-            <View style={{ flex: 8, marginStart: -25 }}>
+            colors={[Colors.skyDark, Colors.sky]} style={{ margin: 5, marginStart: 30, marginEnd: 20, alignItems: 'center', justifyContent: 'center', borderRadius: 10, borderWidth: 1, flexDirection: 'row', padding: 5, backgroundColor: Colors.sky }}>
+            <Image source={{ uri: item.picture.thumbnail }} style={{ position: 'absolute', marginStart: 10, height: 90, width: 90, borderRadius: 45, start: -35, borderWidth: 1, borderColor: Colors.black }} />
+            <View style={{ flex: 8, marginStart: 60 }}>
                 <View style={{ flexDirection: 'row' }}>
                     <Image source={{ uri: 'name' }} style={{ height: 40, width: 40 }} />
-                    <Text style={{ color: Colors.black, fontWeight: '700', fontSize: 18, textAlignVertical: 'center' }}>
+                    <Text style={{ color: Colors.black, fontWeight: '700', fontSize: 16, textAlignVertical: 'center' }}>
                         {item.name.title}.{item.name.first} {item.name.last}
                     </Text>
                 </View>
@@ -86,7 +85,7 @@ const Home = (props: Props) => {
     return (
         <SafeAreaView style={{ flex: 1 }}>
             <FlatList
-                keyExtractor={(item, index) => item?.id?.value + index}
+                keyExtractor={(item, index) => (item?.id?.value) ? item.id.value : Math.random()}
                 data={usersData}
                 ListEmptyComponent={<View style={{ height: Device.height, width: Device.width, alignItems: 'center', justifyContent: 'center' }}>
                     <Image
@@ -111,7 +110,7 @@ const Home = (props: Props) => {
                     initRefreshing ?
                         null : <Image
                             source={require('../gifs/loader.gif')}
-                            style={{ width: 100, height: 100, alignSelf: 'center', display: refreshing ? 'none' : 'flex' }}
+                            style={{ width: 100, height: 100, marginBottom: 100, alignSelf: 'center', display: refreshing ? 'none' : 'flex' }}
                         />
                 }
                 onEndReachedThreshold={0.3} />

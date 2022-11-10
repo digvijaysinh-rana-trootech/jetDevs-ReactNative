@@ -1,4 +1,4 @@
-import { View, Text, SafeAreaView, TextInput, Button, TouchableOpacityBase, TouchableOpacity, ScrollView, StyleSheet } from 'react-native'
+import { View, Text, SafeAreaView, TextInput, Button, TouchableOpacityBase, TouchableOpacity, ScrollView, StyleSheet, Alert } from 'react-native'
 import React, { useState } from 'react'
 import { Colors } from '../resources/Colors'
 import { AppStrings } from '../resources/Strings'
@@ -11,11 +11,19 @@ type Props = {
 }
 
 const Login = (props: Props) => {
-  const [email, setemail] = useState('')
-  const [password, setpassword] = useState('')
+  const toBeEmail = "reactnative@jetdevs.com"
+  const toBePassword = "jetdevs@123"
+  // const [email, setemail] = useState('reactnative@jetdevs.com')
+  // const [password, setpassword] = useState('jetdevs@123')
+  const [email, setemail] = useState('reactnative@jetdevs.com')
+  const [password, setpassword] = useState('jetdevs@123')
   function loginClick() {
-    props.navigation.navigate(ScreenName.DashboardScreen)
-    console.log(email, password)
+    if (email == toBeEmail && password == toBePassword) {
+      props.navigation.navigate(ScreenName.DashboardScreen)
+    }
+    else {
+      Alert.alert(AppStrings.JetDevs, AppStrings.PleaseEnterValid)
+    }
   }
   return (
     <SafeAreaView style={{ flex: 1, backgroundColor: Colors.sky }}>
@@ -23,7 +31,7 @@ const Login = (props: Props) => {
         <Text style={{ fontSize: 50, flex: 1, color: Colors.skyDark }}>{AppStrings.Login}</Text>
         <View style={{ height: Device.height * 0.25, justifyContent: 'space-evenly' }}>
           <TextInput value={email} onChangeText={(value) => setemail(value)} placeholder={AppStrings.Email} style={styles.textinput} />
-          <TextInput value={password} onChangeText={(value) => setpassword(value)} placeholder={AppStrings.Password} style={styles.textinput} />
+          <TextInput value={password} secureTextEntry onChangeText={(value) => setpassword(value)} placeholder={AppStrings.Password} style={styles.textinput} />
         </View>
         <TouchableOpacity onPress={() => loginClick()} style={[styles.textinput, { width: Device.width / 2, padding: 0, alignSelf: 'center', backgroundColor: Colors.skyDark, justifyContent: 'center', alignItems: 'center' }]}>
           <Text style={{ color: Colors.white }}>{AppStrings.Login}</Text>

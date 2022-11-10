@@ -10,5 +10,6 @@ export const AppStrings = {
     Address: 'Address :',
     UserAlreadyMarked:'User is already marked as favorite.',
     OppsNoFav:'Oops! No favourites marked, please mark some users as favorite by clicking ☆ in home page.',
+    PleaseEnterValid:'Please enter valid email or password.',
     Loading:'Loading users'
 }
