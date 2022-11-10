@@ -9,5 +9,6 @@ export const AppStrings = {
     Mail: 'Email :',
     Address: 'Address :',
     UserAlreadyMarked:'User is already marked as favorite.',
-    OppsNoFav:'Oops! No favourites marked, please mark some users as favorite by clicking ☆ in home page.'
+    OppsNoFav:'Oops! No favourites marked, please mark some users as favorite by clicking ☆ in home page.',
+    Loading:'Loading users'
 }
