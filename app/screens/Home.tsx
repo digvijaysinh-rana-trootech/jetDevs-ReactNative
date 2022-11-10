@@ -1,18 +1,15 @@
-import { View, Text, SafeAreaView, FlatList, TouchableOpacity, Image, AppState } from 'react-native'
-import React, { useEffect, useState } from 'react'
 import axios from 'axios'
-import { Device } from '../utils/Device'
-import { Colors } from '../resources/Colors'
-import { AppStrings } from '../resources/Strings'
+import React, { useEffect, useState } from 'react'
+import { FlatList, Image, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { addFavourites } from '../redux/actions/FavouritesActions'
+import { Colors } from '../resources/Colors'
+import { AppStrings } from '../resources/Strings'
 
 type Props = {}
 const baseURL = 'https://randomuser.me/api/'
 const Home = (props: Props) => {
     const dispatch = useDispatch();
-
-
     const [usersData, setusersData] = useState()
     useEffect(() => {
         getUsers()
@@ -38,7 +35,7 @@ const Home = (props: Props) => {
                 <Text style={{ color: Colors.skyDark }}>{AppStrings.Address}{item.location.street.number}, {item.location.street.name}, {item.location.city}, {item.location.state}, {item.location.country}</Text>
             </View>
             <TouchableOpacity onPress={() => addToFavourite(item, index)} style={{ flex: 1, margin: 10, alignSelf: 'flex-start', justifyContent: 'center', alignItems: 'center' }}>
-                <Image source={{ uri: 'favourite' }} style={{ height: 20, width: 20 }} />
+                <Image source={{ uri: 'star' }} style={{ height: 30, width: 30 }} />
             </TouchableOpacity>
         </View>
     }

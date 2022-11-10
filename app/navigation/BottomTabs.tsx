@@ -23,7 +23,7 @@ const BottomTabs = (props: Props) => {
             }} name={ScreenName.HomeScreen} component={Home} />
             <Tab.Screen options={{
                 headerShown: false, tabBarIcon: ({ focused, color, size }) => {
-                    return <Image source={{ uri: 'favourite' }} style={{ height: 30, width: 30, tintColor: focused ? Colors.skyDark : Colors.sky }} />;
+                    return <Image source={{ uri: 'star' }} style={{ height: 30, width: 30, tintColor: focused ? Colors.skyDark : Colors.sky }} />;
                 }
             }} name={ScreenName.FavoriteScreen} component={Favorite} />
         </Tab.Navigator>

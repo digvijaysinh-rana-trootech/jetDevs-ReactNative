@@ -1,4 +1,5 @@
 export const AppStrings = {
+    JetDevs: 'JetDevs',
     Login: 'Login',
     Email: 'Enter Email',
     Password: 'Enter Password',
@@ -7,5 +8,5 @@ export const AppStrings = {
     Phone: 'Phone :',
     Mail: 'Email :',
     Address: 'Address :',
-
+    UserAlreadyMarked:'User is already marked as favorite.'
 }
