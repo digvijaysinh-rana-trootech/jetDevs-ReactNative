@@ -25,7 +25,6 @@ const Login = (props: Props) => {
       } catch (error) {
         console.log("Error", error)
       }
-
     }
     else {
       Alert.alert(AppStrings.JetDevs, AppStrings.PleaseEnterValid)
@@ -56,7 +55,6 @@ const Login = (props: Props) => {
     </SafeAreaView>
   )
 }
-
 
 const styles = StyleSheet.create(
   {
