@@ -1,6 +1,6 @@
 import axios from 'axios'
 import React, { useEffect, useState } from 'react'
-import { FlatList, Image, RefreshControl, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
+import { ActivityIndicator, FlatList, Image, RefreshControl, SafeAreaView, Text, TouchableOpacity, View } from 'react-native'
 import { useDispatch } from 'react-redux'
 import { addFavourites } from '../redux/actions/FavouritesActions'
 import { Colors } from '../resources/Colors'
@@ -26,8 +26,8 @@ const Home = (props: Props) => {
         setrefreshing(true)
         axios.get(baseURL + "?results=" + page).then((response) => {
             console.log(response.data);
-            setusersData(response.data.results)     
-            setrefreshing(false)       
+            setusersData(response.data.results)
+            setrefreshing(false)
         });
     }
     function getUsersWithPagination() {
@@ -70,10 +70,15 @@ const Home = (props: Props) => {
                 onEndReached={() => onEndReached()}
                 refreshControl={
                     <RefreshControl
-                      refreshing={refreshing}
-                      onRefresh={()=>getUsers()}
+                        refreshing={refreshing}
+                        onRefresh={() => getUsers()}
                     />
-                  }
+                }
+                ListFooterComponent={                    
+                <Image                     
+                    source={require('../gifs/loader.gif')}  
+                    style={{width: 100, height: 100,alignSelf:'center',display:refreshing?'none':'flex' }}
+                />}
                 onEndReachedThreshold={0.3} />
         </SafeAreaView>
     )
