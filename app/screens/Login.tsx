@@ -5,7 +5,8 @@ import { AppStrings } from '../resources/Strings'
 import { Device } from '../utils/Device'
 import { NativeStackNavigationHelpers } from '@react-navigation/native-stack/lib/typescript/src/types'
 import { ScreenName } from '../resources/Screens'
-
+import AsyncStorage from '@react-native-async-storage/async-storage';
+import { AppConstants } from '../utils/AppConstants'
 type Props = {
   navigation: NativeStackNavigationHelpers
 }
@@ -17,9 +18,17 @@ const Login = (props: Props) => {
   // const [password, setpassword] = useState('jetdevs@123')
   const [email, setemail] = useState('reactnative@jetdevs.com')
   const [password, setpassword] = useState('jetdevs@123')
-  function loginClick() {
+  async function loginClick() {
     if (email == toBeEmail && password == toBePassword) {
-      props.navigation.navigate(ScreenName.DashboardScreen)
+      try {
+        await AsyncStorage.setItem(AppConstants.IS_LOGGED_IN, JSON.stringify(true)).then((val)=>{
+          console.log("VAllll",val)
+          props.navigation.navigate(ScreenName.DashboardScreen)
+        })
+      } catch (error) {
+        console.log("Error",error)
+      }
+              
     }
     else {
       Alert.alert(AppStrings.JetDevs, AppStrings.PleaseEnterValid)

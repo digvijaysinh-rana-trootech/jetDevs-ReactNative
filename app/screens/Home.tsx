@@ -49,7 +49,7 @@ const Home = (props: Props) => {
             <View style={{ flex: 8, marginStart: 60 }}>
                 <View style={{ flexDirection: 'row' }}>
                     <Image source={{ uri: 'name' }} style={{ height: 40, width: 40 }} />
-                    <Text style={{ color: Colors.black, fontWeight: '700', fontSize: 16, textAlignVertical: 'center' }}>
+                    <Text style={{ color: Colors.black, fontWeight: '700', fontSize: 14, textAlignVertical: 'center' }}>
                         {item.name.title}.{item.name.first} {item.name.last}
                     </Text>
                 </View>

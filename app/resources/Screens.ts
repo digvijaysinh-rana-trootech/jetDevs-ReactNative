@@ -3,5 +3,4 @@ export const ScreenName = {
     DashboardScreen: 'DashboardScreen',
     HomeScreen: 'Home',
     FavoriteScreen: 'Favorite',
-
 }
